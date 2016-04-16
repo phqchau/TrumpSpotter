@@ -2,7 +2,7 @@ Contributors:
 Siddharth Sudheer - siddharthsudheer@gmail.com
 Minh Vu - vdminh28997@gmail.com
 <<<<<<< HEAD
-Giorgi Kharshiladze - gkhars15@earlham.eduq24d
+Giorgi Kharshiladze - gkhars15@earlham.edu
 =======
 Chau Pham - cqpham15@earlham.edu
 Maniz Shrestha - mashres5@earlham.edu

@@ -1,4 +1,4 @@
-angular.module('trump-spotter-app.services', [])
+angular.module('trumpSpotterApp.services', [])
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array

@@ -5,7 +5,12 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('trump-spotter-app', ['ionic', 'trump-spotter-app.controllers', 'trump-spotter-app.services'])
+angular.module('trumpSpotterApp', [
+  'ionic',
+  'ngCordova',
+  'trumpSpotterApp.controllers',
+  'trumpSpotterApp.services'
+  ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -40,12 +45,12 @@ angular.module('trump-spotter-app', ['ionic', 'trump-spotter-app.controllers', '
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.locator', {
+    url: '/locator',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-locator': {
+        templateUrl: 'templates/tab-locator.html',
+        controller: 'LocatorCtrl'
       }
     }
   })
@@ -80,6 +85,6 @@ angular.module('trump-spotter-app', ['ionic', 'trump-spotter-app.controllers', '
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/locator');
 
 });

@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('trump-spotter-app.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 

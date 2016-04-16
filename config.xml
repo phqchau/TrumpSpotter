@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.TrumpSpotter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>TrumpSpotter</name>
+    <description>
+        A Trump Supporter spotting application.
+    </description>
+    <author email="siddharthsudheer@gmail.com" href="http://siddharthsudheer.com">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>

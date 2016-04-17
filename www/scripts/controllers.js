@@ -34,7 +34,8 @@ angular.module('trumpSpotterApp.controllers', [])
     'http://bit.ly/1W9G5fe',
     'http://bit.ly/1Sf2ovx',
     'http://bit.ly/1SkFDIN',
-    'http://bit.ly/268X867'
+    'http://bit.ly/268X867',
+    'http://bit.ly/1TcWkpE'
   ];
 
   $scope.Generate = function(mylatitude,mylongitude,myradius,votefraction) {

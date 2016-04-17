@@ -43,8 +43,8 @@ angular.module('trumpSpotterApp.controllers', [])
       myRadiusKMOne = myRadiusKM/111; // Kilometers converted to the approximate degree 
 
       for (var i=1;i<=loopmax;i++){
-          var randlat = rand(mylatitude-myRadiusKMOne*Math.sqrt(2),mylatitude+myRadiusKMOne*Math.sqrt(2),0.000000000001);
-          var randlong = rand(mylongitude-myRadiusKMOne*Math.sqrt(2),mylongitude+myRadiusKMOne*Math.sqrt(2),0.000000000001);
+          var randlat = rand(mylatitude-myRadiusKMOne/Math.sqrt(2),mylatitude+myRadiusKMOne/Math.sqrt(2),0.000000000001);
+          var randlong = rand(mylongitude-myRadiusKMOne/Math.sqrt(2),mylongitude+myRadiusKMOne/Math.sqrt(2),0.000000000001);
           
           locs.push({latitude: randlat, longitude: randlong});
       }

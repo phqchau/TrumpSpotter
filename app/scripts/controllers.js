@@ -81,6 +81,9 @@ angular.module('trumpSpotterApp.controllers', [])
 
       $ionicLoading.hide();
      
+     var markers = [];
+     var pos = [];
+
      //adding my location marker
       var marker = new google.maps.Marker({
           map: $scope.map,
@@ -91,9 +94,7 @@ angular.module('trumpSpotterApp.controllers', [])
 
       //Adding the trump supporters
       var trumpSupporters = $scope.Generate($rootScope.lat, $rootScope.long, $rootScope.radius.value, 0.5);
-
-      var markers = [];
-      var pos = [];
+      
 
       for (var supporter in trumpSupporters) {
         // Collect and sanitize supporter values
@@ -119,6 +120,10 @@ angular.module('trumpSpotterApp.controllers', [])
         }, timeout);
       };
 
+      var trumpWindow = new google.maps.InfoWindow({
+          content: "fuckkkkk!"
+      });
+
       for (var i = 0; i < pos.length; i++) {
         $scope.addMarkerWithTimeout(pos[i], i * 200);
       };
@@ -140,6 +145,12 @@ angular.module('trumpSpotterApp.controllers', [])
       google.maps.event.addListener(marker, 'click', function () {
           infoWindow.open($scope.map, marker);
       });
+
+      for (var i = 0; i < markers.length; i++) {
+        google.maps.event.addListener(markers[i], 'click', function () {
+            infoWindow.open($scope.map, markers[i]);
+        });
+      };
     });
  
   }, function(error){

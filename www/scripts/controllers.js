@@ -113,9 +113,9 @@ angular.module('trumpSpotterApp.controllers', [])
       var p = 0;
       
       $scope.memePopup = function(q){
-        $rootScope.memeURL = $scope.memes[q];
-        $rootScope.modalOpen = true;
-        //alert($scope.memes[q]);
+        //$rootScope.memeURL = $scope.memes[q];
+        //$rootScope.modalOpen = true;
+        alert($scope.memes[q]);
         p++;
       };
       

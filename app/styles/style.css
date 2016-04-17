@@ -7,3 +7,18 @@
     width: 100%;
     height: 100%;
 }
+
+#memeModal {
+	z-index: 99999;
+	background: rgba(0,0,0,0.6);
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left:0;
+	top:0;
+	display: none !important;
+}
+
+#memeModal.open {
+	display: block !important;
+}

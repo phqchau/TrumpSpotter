@@ -20,6 +20,18 @@ angular.module('trumpSpotterApp.controllers', [])
 
   var currRadius = parseInt($rootScope.radius.value);
 
+  $scope.memes = [
+    'http://bit.ly/1VwIanb',
+    'http://bit.ly/1ONJ0qp',
+    'http://bit.ly/1Gq7dMH',
+    'http://bit.ly/1VwIanb',
+    'http://bit.ly/1ONJ0qp',
+    'http://bit.ly/1Gq7dMH',
+    'http://bit.ly/1VwIanb',
+    'http://bit.ly/1ONJ0qp',
+    'http://bit.ly/1Gq7dMH'
+  ];
+
   $scope.Generate = function(mylatitude,mylongitude,myradius,votefraction) {
 
       function rand(min,max,interval) {
@@ -45,8 +57,9 @@ angular.module('trumpSpotterApp.controllers', [])
       for (var i=1;i<=loopmax;i++){
           var randlat = rand(mylatitude-myRadiusKMOne/Math.sqrt(2),mylatitude+myRadiusKMOne/Math.sqrt(2),0.000000000001);
           var randlong = rand(mylongitude-myRadiusKMOne/Math.sqrt(2),mylongitude+myRadiusKMOne/Math.sqrt(2),0.000000000001);
+          var imgMeme = $scope.memes[i];
           
-          locs.push({latitude: randlat, longitude: randlong});
+          locs.push({latitude: randlat, longitude: randlong, meme: imgMeme});
       }
 
       return(locs);
@@ -91,14 +104,27 @@ angular.module('trumpSpotterApp.controllers', [])
           position: latLng
       });
 
+      $rootScope.modalOpen = false;
+      $rootScope.memeURL = '';
+
 
       //Adding the trump supporters
       var trumpSupporters = $scope.Generate($rootScope.lat, $rootScope.long, $rootScope.radius.value, 0.5);
+      var p = 0;
       
-
+      $scope.memePopup = function(q){
+        $rootScope.memeURL = $scope.memes[q];
+        $rootScope.modalOpen = true;
+        //alert($scope.memes[q]);
+        p++;
+      };
+      
+      var infoWindowContent;
+      
       for (var supporter in trumpSupporters) {
         // Collect and sanitize supporter values
         var supporterObj = trumpSupporters[supporter];
+        var imgObj = $scope.memes[supporter];
         var supporterLatParsed = parseFloat(supporterObj.latitude);
         var supporterLongParsed = parseFloat(supporterObj.longitude);
 
@@ -113,12 +139,8 @@ angular.module('trumpSpotterApp.controllers', [])
           icon: image
         });
 
-        var infoWindowContent = new google.maps.InfoWindow({
-            content: "<IMG BORDER='0' ALIGN='Left' WIDTH=100% SRC='http://bit.ly/1VwIanb'>"
-        });
-
         google.maps.event.addListener(trumpMarker, 'click', function () {
-          infoWindowContent.open($scope.map, this);
+          $scope.memePopup(p);
         });
 
       };
@@ -140,12 +162,6 @@ angular.module('trumpSpotterApp.controllers', [])
       google.maps.event.addListener(marker, 'click', function () {
           infoWindow.open($scope.map, marker);
       });
-
-      for (var i = 0; i < markers.length; i++) {
-        google.maps.event.addListener(markers[i], 'click', function () {
-            infoWindow.open($scope.map, markers[i]);
-        });
-      };
     });
  
   }, function(error){

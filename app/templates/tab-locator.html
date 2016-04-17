@@ -1,5 +1,9 @@
 <ion-view view-title="Locator" ng-init="init()">
+    <div id="memeModal" ng-class="modalOpen == true ? 'open' : '' ">
+        <p>{{memeURL}}</p>
+    </div>
     <ion-content>
-        <div id="map" data-tap-disabled="true"></div>
+        <div id="map" data-tap-disabled="true">
+        </div>
     </ion-content>
 </ion-view>

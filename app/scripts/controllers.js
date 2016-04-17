@@ -15,7 +15,7 @@ angular.module('trumpSpotterApp.controllers', [])
   $rootScope.radius= {
       min:'100',
       max:'1000',
-      value:'700'
+      value:'1000'
   }
 
   var currRadius = parseInt($rootScope.radius.value);

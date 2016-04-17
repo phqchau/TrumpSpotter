@@ -92,6 +92,9 @@ angular.module('trumpSpotterApp.controllers', [])
       //Adding the trump supporters
       var trumpSupporters = $scope.Generate($rootScope.lat, $rootScope.long, $rootScope.radius.value, 0.5);
 
+      var markers = [];
+      var pos = [];
+
       for (var supporter in trumpSupporters) {
         // Collect and sanitize supporter values
         var supporterObj = trumpSupporters[supporter];
@@ -101,13 +104,25 @@ angular.module('trumpSpotterApp.controllers', [])
         var myLatlng = new google.maps.LatLng(supporterLatParsed,supporterLongParsed);
 
         var image = "http://s23.postimg.org/mxfx5035z/tumblr_inline_nvs0vw_Jyj_O1r33elg_540.png"
-        
-        var trumpMarker = new google.maps.Marker({
-            map: $scope.map,
-            icon: image,
-            position: myLatlng
-        });
+
+        pos.push(myLatlng);
       };
+
+      $scope.addMarkerWithTimeout = function(position, timeout) {
+        window.setTimeout(function() {
+          markers.push(new google.maps.Marker({
+            position: position,
+            map: $scope.map,
+            animation: google.maps.Animation.DROP,
+            icon: image
+          }));
+        }, timeout);
+      };
+
+      for (var i = 0; i < pos.length; i++) {
+        $scope.addMarkerWithTimeout(pos[i], i * 200);
+      };
+
      
       var infoWindow = new google.maps.InfoWindow({
           content: "Here I am!"
@@ -125,7 +140,6 @@ angular.module('trumpSpotterApp.controllers', [])
       google.maps.event.addListener(marker, 'click', function () {
           infoWindow.open($scope.map, marker);
       });
-     
     });
  
   }, function(error){

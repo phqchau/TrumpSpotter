@@ -31,7 +31,7 @@ angular.module('trumpSpotterApp.controllers', [])
       var locs = [];
 
       var myRadiusKM = (myradius)/1000; //radius was in meters -> converted to KM
-      var myRadiusKMOne = (myRadiusKM*Math.sqrt(2));
+      var myRadiusKMOne = myRadiusKM;
       var myArea = 3.141592*myRadiusKM*myRadiusKM;//square KM
       //var apima = myArea * 35;// Approximate population in my area
       var apima2 = (myArea * 35) * 0.575//57.5% of the population takes part in elections
@@ -43,8 +43,8 @@ angular.module('trumpSpotterApp.controllers', [])
       myRadiusKMOne = myRadiusKM/111; // Kilometers converted to the approximate degree 
 
       for (var i=1;i<=loopmax;i++){
-          var randlat = rand(mylatitude-myRadiusKMOne,mylatitude+myRadiusKMOne,0.000000000001);
-          var randlong = rand(mylongitude-myRadiusKMOne,mylongitude+myRadiusKMOne,0.000000000001);
+          var randlat = rand(mylatitude-myRadiusKMOne*Math.sqrt(2),mylatitude+myRadiusKMOne*Math.sqrt(2),0.000000000001);
+          var randlong = rand(mylongitude-myRadiusKMOne*Math.sqrt(2),mylongitude+myRadiusKMOne*Math.sqrt(2),0.000000000001);
           
           locs.push({latitude: randlat, longitude: randlong});
       }

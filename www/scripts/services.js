@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('trumpSpotterApp.services', [])
 
 .factory('Chats', function() {

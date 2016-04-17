@@ -55,21 +55,21 @@ angular.module('trumpSpotterApp', [
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.quotes', {
+      url: '/quotes',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-quotes': {
+          templateUrl: 'templates/tab-quotes.html',
+          controller: 'QuotesCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.quote-detail', {
+      url: '/quotes/:quoteId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-quotes': {
+          templateUrl: 'templates/quote-detail.html',
+          controller: 'QuoteDetailCtrl'
         }
       }
     })

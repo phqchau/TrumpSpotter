@@ -2,11 +2,11 @@
 
 angular.module('trumpSpotterApp.services', [])
 
-.factory('Chats', function() {
+.factory('Quotes', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var quotes = [{
     id: 0,
     name: 'Ben Sparrow',
     lastText: 'You on your way?',
@@ -35,15 +35,15 @@ angular.module('trumpSpotterApp.services', [])
 
   return {
     all: function() {
-      return chats;
+      return quotes;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(quote) {
+      quotes.splice(quotes.indexOf(quote), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(quoteId) {
+      for (var i = 0; i < quotes.length; i++) {
+        if (quotes[i].id === parseInt(quoteId)) {
+          return quotes[i];
         }
       }
       return null;

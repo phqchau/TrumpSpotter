@@ -31,7 +31,7 @@ angular.module('trumpSpotterApp.controllers', [])
       var locs = [];
 
       var myRadiusKM = (myradius)/1000; //radius was in meters -> converted to KM
-      var myRadiusKMOne = (myRadiusKM/2);
+      var myRadiusKMOne = (myRadiusKM*Math.sqrt(2));
       var myArea = 3.141592*myRadiusKM*myRadiusKM;//square KM
       //var apima = myArea * 35;// Approximate population in my area
       var apima2 = (myArea * 35) * 0.575//57.5% of the population takes part in elections

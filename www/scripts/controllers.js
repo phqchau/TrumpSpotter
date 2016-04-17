@@ -104,28 +104,23 @@ angular.module('trumpSpotterApp.controllers', [])
 
         var myLatlng = new google.maps.LatLng(supporterLatParsed,supporterLongParsed);
 
-        var image = "http://s23.postimg.org/mxfx5035z/tumblr_inline_nvs0vw_Jyj_O1r33elg_540.png"
+        var image = "http://s23.postimg.org/mxfx5035z/tumblr_inline_nvs0vw_Jyj_O1r33elg_540.png";
 
-        pos.push(myLatlng);
-      };
+        var trumpMarker = new google.maps.Marker({
+          position: myLatlng,
+          map: $scope.map,
+          animation: google.maps.Animation.DROP,
+          icon: image
+        });
 
-      $scope.addMarkerWithTimeout = function(position, timeout) {
-        window.setTimeout(function() {
-          markers.push(new google.maps.Marker({
-            position: position,
-            map: $scope.map,
-            animation: google.maps.Animation.DROP,
-            icon: image
-          }));
-        }, timeout);
-      };
+        var infoWindowContent = new google.maps.InfoWindow({
+            content: "<IMG BORDER='0' ALIGN='Left' WIDTH=100% SRC='http://bit.ly/1VwIanb'>"
+        });
 
-      var trumpWindow = new google.maps.InfoWindow({
-          content: "fuckkkkk!"
-      });
+        google.maps.event.addListener(trumpMarker, 'click', function () {
+          infoWindowContent.open($scope.map, this);
+        });
 
-      for (var i = 0; i < pos.length; i++) {
-        $scope.addMarkerWithTimeout(pos[i], i * 200);
       };
 
      

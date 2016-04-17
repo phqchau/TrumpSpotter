@@ -2,7 +2,7 @@
 
 angular.module('trumpSpotterApp.controllers', [])
 
-.controller('LocatorCtrl', function($scope, $rootScope, $state, $cordovaGeolocation, $ionicLoading) {
+.controller('LocatorCtrl', function($scope, $rootScope, $ionicModal, $state, $cordovaGeolocation, $ionicLoading) {
 
   $ionicLoading.show({
     content: 'Loading',
@@ -117,11 +117,29 @@ angular.module('trumpSpotterApp.controllers', [])
       //Adding the trump supporters
       var trumpSupporters = $scope.Generate($rootScope.lat, $rootScope.long, $rootScope.radius.value, 0.5);
       var p = 0;
-      
+
+      // Create the login modal that we will use later
+      $ionicModal.fromTemplateUrl('templates/memePop.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
+
+      // Triggered in the meme modal to close it
+      $rootScope.closeMeme = function() {
+        $scope.modal.hide();
+      };
+
+      // Open the meme modal
+      $scope.openMeme = function() {
+        $scope.modal.show();
+      };
+
       $scope.memePopup = function(q){
-        //$rootScope.memeURL = $scope.memes[q];
+        $scope.openMeme();
+        $rootScope.memeURL = $scope.memes[q];
         //$rootScope.modalOpen = true;
-        alert($scope.memes[q]);
+        //alert($scope.memes[q]);
         p++;
       };
       

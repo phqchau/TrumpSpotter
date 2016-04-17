@@ -24,12 +24,17 @@ angular.module('trumpSpotterApp.controllers', [])
     'http://bit.ly/1VwIanb',
     'http://bit.ly/1ONJ0qp',
     'http://bit.ly/1Gq7dMH',
-    'http://bit.ly/1VwIanb',
-    'http://bit.ly/1ONJ0qp',
-    'http://bit.ly/1Gq7dMH',
-    'http://bit.ly/1VwIanb',
-    'http://bit.ly/1ONJ0qp',
-    'http://bit.ly/1Gq7dMH'
+    'http://bit.ly/1TZZCP6',
+    'http://bit.ly/22F5uOe',
+    'http://bit.ly/1mmiOZ4',
+    'http://bit.ly/23Q7qpD',
+    'http://bit.ly/1NvNI93',
+    'http://bit.ly/1U005B0',
+    'http://bit.ly/1STsqnI',
+    'http://bit.ly/1W9G5fe',
+    'http://bit.ly/1Sf2ovx',
+    'http://bit.ly/1SkFDIN',
+    'http://bit.ly/268X867'
   ];
 
   $scope.Generate = function(mylatitude,mylongitude,myradius,votefraction) {

@@ -22,3 +22,12 @@
 #memeModal.open {
 	display: block !important;
 }
+
+.memePopup {
+	background: #000;
+}
+
+.memePopup img{
+	width:100%;
+	position: relative;
+}

@@ -99,10 +99,12 @@ angular.module('trumpSpotterApp.controllers', [])
         var supporterLongParsed = parseFloat(supporterObj.longitude);
 
         var myLatlng = new google.maps.LatLng(supporterLatParsed,supporterLongParsed);
+
+        var image = "http://s23.postimg.org/mxfx5035z/tumblr_inline_nvs0vw_Jyj_O1r33elg_540.png"
         
         var trumpMarker = new google.maps.Marker({
             map: $scope.map,
-            animation: google.maps.Animation.DROP,
+            icon: image,
             position: myLatlng
         });
       };

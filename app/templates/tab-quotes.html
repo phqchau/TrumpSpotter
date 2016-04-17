@@ -1,0 +1,16 @@
+<ion-view view-title="Trump's Epic Quotes">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="quote in quotes" type="item-text-wrap" href="#/tab/quotes/{{quote.id}}">
+        <img ng-src="{{quote.face}}">
+        <h2>{{quote.name}}</h2>
+        <p>{{quote.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(quote)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

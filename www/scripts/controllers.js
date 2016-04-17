@@ -54,32 +54,32 @@ angular.module('trumpSpotterApp.controllers', [])
       var apima2 = (myArea * 35) * 0.575//57.5% of the population takes part in elections
       //var loopmax = votefraction*apima2;
       var loopmax = Math.floor(votefraction*apima2);
-      
+
       //radius should be given in Kilometers
 
-      myRadiusKMOne = myRadiusKM/111; // Kilometers converted to the approximate degree 
+      myRadiusKMOne = myRadiusKM/111; // Kilometers converted to the approximate degree
 
       for (var i=1;i<=loopmax;i++){
           var randlat = rand(mylatitude-myRadiusKMOne/Math.sqrt(2),mylatitude+myRadiusKMOne/Math.sqrt(2),0.000000000001);
           var randlong = rand(mylongitude-myRadiusKMOne/Math.sqrt(2),mylongitude+myRadiusKMOne/Math.sqrt(2),0.000000000001);
           var imgMeme = $scope.memes[i];
-          
+
           locs.push({latitude: randlat, longitude: randlong, meme: imgMeme});
       }
 
       return(locs);
   }
-  
+
   var options = {timeout: 10000, enableHighAccuracy: true};
- 
+
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
- 
+
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
     $rootScope.lat = position.coords.latitude;
     $rootScope.long = position.coords.longitude;
 
- 
+
     var mapOptions = {
       center: latLng,
       zoom: 15,
@@ -98,7 +98,7 @@ angular.module('trumpSpotterApp.controllers', [])
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
       $ionicLoading.hide();
-     
+
      var markers = [];
      var pos = [];
 
@@ -141,9 +141,9 @@ angular.module('trumpSpotterApp.controllers', [])
         //alert($scope.memes[q]);
         p++;
       };
-      
+
       var infoWindowContent;
-      
+
       for (var supporter in trumpSupporters) {
         // Collect and sanitize supporter values
         var supporterObj = trumpSupporters[supporter];
@@ -168,7 +168,7 @@ angular.module('trumpSpotterApp.controllers', [])
 
       };
 
-     
+
       var infoWindow = new google.maps.InfoWindow({
           content: "Here I am!"
       });
@@ -181,19 +181,19 @@ angular.module('trumpSpotterApp.controllers', [])
       });
 
       circle.bindTo('center', marker, 'position');
-     
+
       google.maps.event.addListener(marker, 'click', function () {
           infoWindow.open($scope.map, marker);
       });
     });
- 
+
   }, function(error){
     console.log("Could not get location");
   });
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('QuotesCtrl', function($scope, Quotes) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -202,21 +202,21 @@ angular.module('trumpSpotterApp.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.quotes = Quotes.all();
+  $scope.remove = function(quote) {
+    Quotes.remove(quote);
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('QuoteDetailCtrl', function($scope, $stateParams, Quotes) {
+  $scope.quote = Quotes.get($stateParams.quoteId);
 })
 
 .controller('MeCtrl', function($scope, $http) {
   $scope.settings = {
     enableSaviour: true
   };
-  
+
   //return $http.jsonp("http://data.fcc.gov/api/block/find?format=json&latitude=28.35975&longitude=-81.421988");
 
 });

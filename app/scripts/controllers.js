@@ -2,7 +2,15 @@
 
 angular.module('trumpSpotterApp.controllers', [])
 
-.controller('LocatorCtrl', function($scope, $rootScope, $state, $cordovaGeolocation) {
+.controller('LocatorCtrl', function($scope, $rootScope, $state, $cordovaGeolocation, $ionicLoading) {
+
+  $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
 
   $rootScope.radius= {
       min:'100',
@@ -70,6 +78,8 @@ angular.module('trumpSpotterApp.controllers', [])
 
     //Wait until the map is loaded
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+
+      $ionicLoading.hide();
      
      //adding my location marker
       var marker = new google.maps.Marker({

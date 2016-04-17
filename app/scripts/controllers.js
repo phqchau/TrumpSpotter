@@ -1,17 +1,34 @@
+"use strict";
+
 angular.module('trumpSpotterApp.controllers', [])
 
-.controller('LocatorCtrl', function($scope, $state, $cordovaGeolocation) {
+.controller('LocatorCtrl', function($scope, $rootScope, $state, $cordovaGeolocation) {
+
+  $rootScope.radius= {
+      min:'100',
+      max:'1000',
+      value:'500'
+  }
+
+  var currRadius = parseInt($rootScope.radius.value);
   
   var options = {timeout: 10000, enableHighAccuracy: true};
  
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
  
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
  
     var mapOptions = {
       center: latLng,
       zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+
+      zoomControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
     };
 
     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -28,6 +45,15 @@ angular.module('trumpSpotterApp.controllers', [])
       var infoWindow = new google.maps.InfoWindow({
           content: "Here I am!"
       });
+
+      var circle = new google.maps.Circle({
+        map: $scope.map,
+        radius: currRadius,    //in metres
+        fillColor: '#11c1f3',
+        strokeColor: 'transparent'
+      });
+
+      circle.bindTo('center', marker, 'position');
      
       google.maps.event.addListener(marker, 'click', function () {
           infoWindow.open($scope.map, marker);
@@ -60,8 +86,8 @@ angular.module('trumpSpotterApp.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('MeCtrl', function($scope) {
   $scope.settings = {
-    enableFriends: true
+    enableSaviour: true
   };
 });

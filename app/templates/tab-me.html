@@ -1,0 +1,16 @@
+<ion-view view-title="Me">
+  <ion-content>
+    <ion-list>
+    <ion-toggle  ng-model="settings.enableSaviour">
+        Enable Saviour
+    </ion-toggle>
+	<div class="list">
+	  <div class="item range range-assertive">
+	    <i class="icon ion-ios-sunny-outline"></i>
+       	<input type="range" min="{{radius.min}}" max="{{radius.max}}" value="{{radius.value}}" step="100">
+	    <i class="icon ion-ios-sunny"></i>
+	  </div>
+	</div>
+    </ion-list>
+  </ion-content>
+</ion-view>
